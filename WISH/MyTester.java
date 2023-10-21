@@ -1,5 +1,4 @@
- 
-import java.util.*;
+ import java.util.*;
 /**
  * Write a description of class OTester here.
  * 
