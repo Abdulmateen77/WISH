@@ -15,12 +15,22 @@ import java.util.*;
 
 public class Planet 
 {
+    // Fields to store planet information
     private int planetnumber;
     private String Name;
     private int luxuryrating;
     private int capacity;
     private ArrayList<Permit> permitList;
     
+    /**
+     * Constructor for creating a Planet object with specified values.
+     * Initializes the permitList as an empty ArrayList.
+     * 
+     * @param pn The unique number of the planet.
+     * @param n The name of the planet.
+     * @param lr The luxury rating of the planet.
+     * @param c The capacity of the planet.
+     */
     public Planet(int pn, String n, int lr, int c)
     {
         planetnumber = pn;
@@ -30,16 +40,31 @@ public class Planet
         permitList = new ArrayList<Permit>();
     }
     
-      public int planetnumber()
+    /**
+     * Get the unique number of the planet.
+     * 
+     * @return The planet's unique number.
+     */
+    public int planetnumber()
     {
         return planetnumber;
     }
     
+    /**
+     * Get the name of the planet.
+     * 
+     * @return The name of the planet.
+     */
     public String GetplanetName ()
     {
         return Name;
     }
     
+    /**
+     * Get the luxury rating of the planet.
+     * 
+     * @return The luxury rating of the planet.
+     */
     public int luxuryrating ()
     {
         return luxuryrating;
