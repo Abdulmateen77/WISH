@@ -70,17 +70,31 @@ public class Planet
         return luxuryrating;
     }
     
+**
+     * Get the number of permits currently on the planet.
+     * 
+     * @return The number of permits on the planet.
+     */
     public int noofpermit()
     {
         return permitList.size();
-    
     }
     
+    /**
+     * Add a permit to the list of permits on the planet.
+     * 
+     * @param p The permit to be added.
+     */
     public void enter(Permit p)
     {
         permitList.add(p);
     }
     
+    /**
+     * Remove a permit from the list of permits on the planet based on permit ID.
+     * 
+     * @param permitId The ID of the permit to be removed.
+     */
     public void leave(int permitId)
     {
         Permit temp = findpermitattheplanet(permitId);
@@ -88,9 +102,14 @@ public class Planet
         {
             permitList.remove(temp);
         }
-    
     }
-            
+    
+    /**
+     * Find a permit on the planet based on permit ID.
+     * 
+     * @param permitId The ID of the permit to find.
+     * @return The permit with the specified ID, or null if not found.
+     */
     public Permit findpermitattheplanet (int permitId)
     {
         for(int indx=0; indx<permitList.size(); indx++)
@@ -100,22 +119,18 @@ public class Planet
             {
                 return temp;
             }
-        
         }  
         return null;
     }
     
+    /**
+     * Check if the planet is at full capacity.
+     * 
+     * @return True if the planet is full, false otherwise.
+     */
     public boolean isfull()
     {   
-        if (permitList.size() >= capacity)
-        { 
-            return true;
-        }
-        else
-        {
-            return false;
-        }
-    
+        return (permitList.size() >= capacity);
     }
     
     public String getpermitlist()
