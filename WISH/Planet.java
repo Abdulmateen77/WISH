@@ -133,6 +133,11 @@ public class Planet
         return (permitList.size() >= capacity);
     }
     
+      /**
+     * Get a string representation of the list of permits on the planet.
+     * 
+     * @return A string containing information about the permits.
+     */
     public String getpermitlist()
     {
         String ls = "";
@@ -140,45 +145,53 @@ public class Planet
         {
             for (Permit temp: permitList)
             {
-            ls = ls + "\n" + temp.toString();
+                ls = ls + "\n" + temp.toString();
             }
             return ls + "\n*******************************";
         }
         return "\nNo Permits" + "\n*******************************";
     }
     
+    /**
+     * Check if a permit with the specified ID exists on the planet.
+     * 
+     * @param permitId The ID of the permit to check.
+     * @return True if the permit exists, false otherwise.
+     */
     public boolean checkpermit(int permitId)
     {
         for (int indx = 0; indx<permitList.size(); indx++)
         {
-        Permit temp = permitList.get(indx);
-        if (temp.getidnumber() == permitId)
-        { 
-            return true;
-        }
+            Permit temp = permitList.get(indx);
+            if (temp.getidnumber() == permitId)
+            { 
+                return true;
+            }
         }
         return false;
     }
     
+    /**
+     * Check if a specified number of credits is sufficient for a permit.
+     * 
+     * @param c The number of credits to check.
+     * @return True if the credits are sufficient, false otherwise.
+     */
     public boolean creditcheck(int c)
     {
-        if ( c >= 3)
-        {
-            return true;
-        }
-        else
-        {
-            return false;
-        }
-        
+        return (c >= 3);
     }
     
+    /**
+     * Get a string representation of the planet.
+     * 
+     * @return A string containing planet information.
+     */
     public String toString()
     {
-        String pl;
-        pl = "\n Planet number: " + planetnumber +  " " + Name 
-              + "\n luxury rating: " + luxuryrating + "\n capacity: " + capacity 
-              + "\nPermit List" + getpermitlist();
-        return pl;
+        return "\n Planet number: " + planetnumber + " " + Name +
+               "\n luxury rating: " + luxuryrating + "\n capacity: " + capacity +
+               "\nPermit List" + getpermitlist();
     }
 }
+
