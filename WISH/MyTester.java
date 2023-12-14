@@ -1,47 +1,37 @@
-import java.util.*;
-/**
- * Write a description of class OTester here.
- * 
- * @author 
- * @version 
- */
-public class MyTester 
-{   
+import static org.junit.jupiter.api.Assertions.*;
+import org.junit.jupiter.api.AfterEach;
+import org.junit.jupiter.api.BeforeEach;
+import org.junit.jupiter.api.Test;
+import java.util.Scanner;
 
-    private void doTest()
-    {
-        Resort wayward = new Resort("Wayward Asteroids");
-    
-        // write your tests here by invoking Resort methods on the Resort object called wayward
-        System.out.print("********** Permits *******");
-        System.out.println(wayward.getAllPermitsOnEachPlanet());
-    
-        System.out.print("********** Planets *******");
-        System.out.println(wayward.getallplanet());
-        
-        System.out.println("\n**** Get permit details ");
-        String pp = wayward.getPermitDetails(1002);
-        System.out.println(pp);
-        
-        
-        System.out.println("\n**** Get permit Location");
-        String lp = wayward.getPermitLocation(1001);
-        System.out.println(lp);
-        
-        System.out.println("\n**** Adding permit to other planet***");
-        
-        String trv = wayward.travel(1001,"ABC1");
-        System.out.println(trv);
-        trv = wayward.travel(1001,"CDE3");
-        System.out.println(trv);
-        
-        
-    }
-     
-    
+/**
+ * The test class PermitTest.
+ * This class contains a main method for testing the Permit class functionality.
+ * Replace (your name) and (a version number or a date) with appropriate values.
+ * 
+ * Note: It's a good practice to use JUnit tests for unit testing instead of a main method in the production code.
+ *       This main method is used here for demonstration purposes only.
+ */
+public class PermitTest
+{
     public static void main(String[] args)
-    {
-        MyTester xx = new MyTester();
-        xx.doTest();
+    {  
+        // Create a Permit object with an initial balance of 1000 credits, owned by "Lynn", valid for 5 shuttle rides, and expiration in 10 days.
+        Permit P1 = new Permit(1000, "Lynn", 5, 10);
+        
+        // Display the string representation of the Permit object using the toString() method.
+        String p = P1.toString();
+        System.out.println(p);
+        
+        // Check if "Lynn" has enough credits to make a shuttle ride and print the result.
+        System.out.println("Does " + P1.name() + " have enough credits to make a shuttle ride: " + P1.enoughcredit());
+        
+        // Add 2 credits to the Permit object and display the new credit balance.
+        P1.addcredits(2);
+        System.out.println("Adding some Credits" + "\nnew balance is: " + P1.getcredits());  
+        
+        // Deduct 2 credits from the Permit object and display the new credit balance.
+        P1.deductcredits(2);
+        System.out.println("Deducting credits" + "\nnew balance after deduction is: " + P1.getcredits());
     }
 }
