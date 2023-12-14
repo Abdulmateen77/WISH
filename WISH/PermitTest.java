@@ -16,10 +16,10 @@ public class PermitTest
 {
     public static void main(String[] args)
     {  
-        // Create a Permit object with an initial balance of 1000 credits, owned by "Lynn", valid for 5 shuttle rides, and expiration in 10 days.
+        //Create a Permit object with an initial balance of 1000 credits, owned by "Lynn", valid for 5 shuttle rides, and expiration in 10 days.
         Permit P1 = new Permit(1000, "Lynn", 5, 10);
         
-        // Display the string representation of the Permit object using the toString() method.
+        //Display the string representation of the Permit object using the toString() method.
         String p = P1.toString();
         System.out.println(p);
         
