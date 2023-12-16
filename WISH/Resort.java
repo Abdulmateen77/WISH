@@ -1,6 +1,4 @@
- 
-
-import java.util.*;
+ import java.util.*;
 
 /**This class implements the WISH interface
  *
@@ -166,21 +164,23 @@ public class Resort implements WISH
       * @param shtlCode is the code of the shuttle journey by which the permit wants to pPermitel
       * @return true if the permit is allowed on the shuttle journey, false otherwise 
       **/
-    public boolean canTravel(int pId, String shtlCode)
-    {   //other checks optional
-        Shuttle tr = findtravel(shtlCode);
-        Permit p = findpermit(pId);
-        
-        if (tr == null || p == null)
-        {
-            return false ;
-        }
-        else
-        {
-            return tr.canShuttleRide(p);
-        }
-    }     
-
+  public boolean canTravel(int pId, String shtlCode) {
+    // Other checks (if any) may be implemented here
+    
+    // Find the shuttle associated with the provided code
+    Shuttle tr = findTravel(shtlCode);
+    
+    // Find the travel permit associated with the provided person ID
+    Permit p = findPermit(pId);
+    
+    // If either the shuttle or the permit is not found, return false
+    if (tr == null || p == null) {
+        return false;
+    } else {
+        // Check if the person with the given permit can ride the specified shuttle
+        return tr.canShuttleRide(p);
+    }
+}
     /**Returns the result of a permit requesting to move by Shuttle.
      * A move will be successful if:  
      * the luxury rating of the permit  >= the luxury rating of the destination planet
