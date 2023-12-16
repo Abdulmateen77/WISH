@@ -246,130 +246,165 @@ public class Resort implements WISH {
     }
    
     //***************private methods**************
-    private void loadPlanets()
-    {
-      Planet p1 = new Planet (0, "Home", 0, 1000);
-      allplanets.add(p1);
-      Planet p2 = new Planet (1, "Sprite", 1, 100);
-      allplanets.add(p2);
-      Planet p3 = new Planet (2, "Tropicana", 3, 10);
-      allplanets.add(p3);
-      Planet p4 = new Planet (3, "Fantasia", 5, 2);
-      allplanets.add(p4);
-      Planet p5 = new Planet (4, "Solo", 1, 1);
-      allplanets.add(p5);
-      
+  /**
+ * This class represents a Resort implementing the WISH (World Interplanetary Space Hub) interface.
+ * It manages planets, shuttles, and permits, providing methods for loading initial data and performing
+ * searches within these entities.
+ */
+public class Resort implements WISH {
+
+    // Private fields to store the Resort location, permits, planets, and shuttles
+    private String Resortlocation;
+    private ArrayList<Permit> allpermits = new ArrayList<Permit>();
+    private ArrayList<Planet> allplanets = new ArrayList<Planet>();
+    private ArrayList<Shuttle> allshuttle = new ArrayList<Shuttle>();
+
+    /**
+     * Constructs a Resort with the specified location. Loads initial data for planets, permits, and shuttles.
+     *
+     * @param loc The location of the Resort.
+     */
+    public Resort(String loc) {
+        Resortlocation = loc;
+        
+        // Load initial data for planets, permits, and shuttles during the initialization of the Resort
+        loadPlanets();
+        loadPermits();
+        setUpShuttles();
+    }
+
+    /**
+     * Loads initial data for planets into the Resort.
+     */
+    private void loadPlanets() {
+        // Create and add planets to the list
+        Planet p1 = new Planet(0, "Home", 0, 1000);
+        allplanets.add(p1);
+        Planet p2 = new Planet(1, "Sprite", 1, 100);
+        allplanets.add(p2);
+        Planet p3 = new Planet(2, "Tropicana", 3, 10);
+        allplanets.add(p3);
+        Planet p4 = new Planet(3, "Fantasia", 5, 2);
+        allplanets.add(p4);
+        Planet p5 = new Planet(4, "Solo", 1, 1);
+        allplanets.add(p5);
     }
     
-    private void setUpShuttles()
-    {
+    /**
+     * Sets up shuttles connecting different planets.
+     */
+    private void setUpShuttles() {
+        // Find planets by their numbers
         Planet p1 = findplanet(0);
         Planet p2 = findplanet(1);
         Planet p3 = findplanet(2);
         Planet p4 = findplanet(3);
         Planet p5 = findplanet(4);
         
-        Shuttle xxx = new Shuttle ("A0", p1,p2);
-        allshuttle.add(xxx);
-        allshuttle.add(new Shuttle ("B1", p2,p1));
-        allshuttle.add(new Shuttle ("C2", p2,p3));
-        allshuttle.add(new Shuttle ("D3", p2,p5));
-        allshuttle.add(new Shuttle ("E4", p3,p2));
-        allshuttle.add(new Shuttle ("F5", p3,p4));
-        allshuttle.add(new Shuttle ("G6", p4,p2));
-        allshuttle.add(new Shuttle ("H7", p5,p2));
+        // Create and add shuttles to the list
+        allshuttle.add(new Shuttle("A0", p1, p2));
+        allshuttle.add(new Shuttle("B1", p2, p1));
+        allshuttle.add(new Shuttle("C2", p2, p3));
+        allshuttle.add(new Shuttle("D3", p2, p5));
+        allshuttle.add(new Shuttle("E4", p3, p2));
+        allshuttle.add(new Shuttle("F5", p3, p4));
+        allshuttle.add(new Shuttle("G6", p4, p2));
+        allshuttle.add(new Shuttle("H7", p5, p2));
     }
     
-    private void loadPermits()
-    {
-        allpermits.add(new Permit(1000,"Lynn", 5, 10));
-        allpermits.add(new Permit(1001,"May", 3, 20));
-        allpermits.add(new Permit(1002,"Nils", 10, 20));
-        allpermits.add(new Permit(1003,"Olek", 2, 12));
-        allpermits.add(new Permit(1004,"Pan", 3, 3));
-        allpermits.add(new Permit(1005,"Quin", 1, 5));
-        allpermits.add(new Permit(1006,"Raj", 10, 6));
-        allpermits.add(new Permit(1007,"Sol", 7, 20));
-        allpermits.add(new Permit(1008,"Tel", 6, 24));
-     }
-     
-    
-    public Shuttle findtravel(String shtlCode)
-    {
-        for (Shuttle temp: allshuttle)
-        {
-            System.out.println(temp.toString());
-            String code = temp.ridecode();
-            if (code.equals(shtlCode))
-            {
-              System.out.println("Found");
-                return temp;
-            }
-            else
-            {
-               System.out.println("Not found"); 
-            }
-        } return null;
+    /**
+     * Loads initial data for permits into the Resort.
+     */
+    private void loadPermits() {
+        // Create and add permits to the list
+        allpermits.add(new Permit(1000, "Lynn", 5, 10));
+        allpermits.add(new Permit(1001, "May", 3, 20));
+        allpermits.add(new Permit(1002, "Nils", 10, 20));
+        allpermits.add(new Permit(1003, "Olek", 2, 12));
+        allpermits.add(new Permit(1004, "Pan", 3, 3));
+        allpermits.add(new Permit(1005, "Quin", 1, 5));
+        allpermits.add(new Permit(1006, "Raj", 10, 6));
+        allpermits.add(new Permit(1007, "Sol", 7, 20));
+        allpermits.add(new Permit(1008, "Tel", 6, 24));
     }
 
-    private Planet findplanet(int pn)
-    {
-        for(Planet temp : allplanets)
-        {
-            if(temp.planetnumber() == pn)
-            {
+    /**
+     * Finds and returns a shuttle with the specified ride code.
+     *
+     * @param shtlCode The ride code of the shuttle to find.
+     * @return The found shuttle or null if not found.
+     */
+    public Shuttle findtravel(String shtlCode) {
+        for (Shuttle temp : allshuttle) {
+            System.out.println(temp.toString());
+            String code = temp.ridecode();
+            if (code.equals(shtlCode)) {
+                System.out.println("Found");
+                return temp;
+            } else {
+                System.out.println("Not found");
+            }
+        }
+        return null;
+    }
+
+    /**
+     * Finds and returns a planet with the specified planet number.
+     *
+     * @param pn The planet number to find.
+     * @return The found planet or null if not found.
+     */
+    private Planet findplanet(int pn) {
+        for (Planet temp : allplanets) {
+            if (temp.planetnumber() == pn) {
                 return temp;
             }
         }
         return null;
     }
-    
- 
-    /** Returns the permit with the permit id specified by the parameter
-     * @return the permit with the specified name
-     **/
-    public Permit getPermit(int id)
-    {
-        for (Permit temp: allpermits)
-        {
-         if (temp.getidnumber() == id)
-         {
-             return temp;
-         }
+
+    /**
+     * Returns the permit with the specified ID.
+     *
+     * @param id The ID of the permit to find.
+     * @return The found permit or null if not found.
+     */
+    public Permit getPermit(int id) {
+        for (Permit temp : allpermits) {
+            if (temp.getidnumber() == id) {
+                return temp;
+            }
         }
         return null;
     }
-    
-    
-    /** Returns the planet with the name specified by the parameter
-     * @return the planet with the specified name
-     **/
-    private Planet getPlanet(String planetName)
-    {
-        for (Planet temp: allplanets)
-        {
-         if (temp.GetplanetName() == planetName)
-         {
-             return temp;
-         }   
+
+    /**
+     * Returns the planet with the specified name.
+     *
+     * @param planetName The name of the planet to find.
+     * @return The found planet or null if not found.
+     */
+    private Planet getPlanet(String planetName) {
+        for (Planet temp : allplanets) {
+            if (temp.GetplanetName().equals(planetName)) {
+                return temp;
+            }
         }
-        
         return null;
     }
-    
-    /** Returns the planet with the name specified by the parameter
-     * @return the planet with the specified name
-     **/
-    private Shuttle getShuttle(String shut)
-    {
-        for (Shuttle temp: allshuttle)
-        {
-         if (temp.ridecode() == shut)
-         {
-             return temp;
-         }   
+
+    /**
+     * Returns the shuttle with the specified ride code.
+     *
+     * @param shut The ride code of the shuttle to find.
+     * @return The found shuttle or null if not found.
+     */
+    private Shuttle getShuttle(String shut) {
+        for (Shuttle temp : allshuttle) {
+            if (temp.ridecode().equals(shut)) {
+                return temp;
+            }
         }
-        
         return null;
     }
 }
