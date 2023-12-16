@@ -5,25 +5,34 @@
  * @author 
  * @version 
  **/
-public class Resort implements WISH
-{
+/**
+ * Represents a Resort that implements the WISH (World Interplanetary Space Hub) interface.
+ */
+public class Resort implements WISH {
+
+    // Private fields to store the Resort location, permits, planets, and shuttles
     private String Resortlocation;
     private ArrayList<Permit> allpermits = new ArrayList<Permit>();
     private ArrayList<Planet> allplanets = new ArrayList<Planet>();
     private ArrayList<Shuttle> allshuttle = new ArrayList<Shuttle>();
 
-
-    /** constructor
+    /**
+     * Constructs a Resort with the specified location.
+     *
+     * @param loc The location of the Resort.
      */
-    public Resort(String loc) 
-    {
+    public Resort(String loc) {
         Resortlocation = loc;
+        
+        // Load planets, permits, and set up shuttles during the initialization of the Resort
         loadPlanets();
         loadPermits();
         setUpShuttles();
-           
     }
-    
+
+    // Additional methods and functionalities can be implemented here
+}
+
     /**
      * Returns all of the details of all planets including the permits
      * currently on each planet, on "No permits"
