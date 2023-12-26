@@ -75,6 +75,7 @@ public class Permit
      * 
      * @param newcredits The number of credits to add.
      */
+    
     public void addcredits(int newcredits)
     { 
         noofcredits = noofcredits + newcredits;
