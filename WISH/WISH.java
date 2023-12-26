@@ -5,6 +5,7 @@
  * @author A.Marczyk 
  * @version 03/11/21
  */
+
 public interface WISH
 {
     /**
