@@ -153,10 +153,10 @@ public class Planet
     }
     
     /**
-     * Check if a permit with the specified ID exists on the planet.
+     *Check if a permit with the specified ID exists on the planet.
      * 
-     * @param permitId The ID of the permit to check.
-     * @return True if the permit exists, false otherwise.
+     *@param permitId The ID of the permit to check.
+     *@return True if the permit exists, false otherwise.
      */
     public boolean checkpermit(int permitId)
     {
