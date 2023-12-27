@@ -41,9 +41,9 @@ public class Planet
     }
     
     /**
-     * Get the unique number of the planet.
+     *Get the unique number of the planet.
      * 
-     * @return The planet's unique number.
+     *@return The planet's unique number.
      */
     public int planetnumber()
     {
