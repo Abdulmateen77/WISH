@@ -183,9 +183,9 @@ public class Planet
     }
     
     /**
-     * Get a string representation of the planet.
+     *Get a string representation of the planet.
      * 
-     * @return A string containing planet information.
+     *@return A string containing planet information.
      */
     public String toString()
     {
