@@ -43,11 +43,13 @@ public class ResortUI {
         System.out.println("\nThank you");
     }
 
+    
     /**
      * Display the menu options and get the user's choice.
      * 
      * @return The user's choice as an integer.
      */
+
     private int getOption() {
         System.out.println("What would you like to do?");
         System.out.println("0. Quit");
